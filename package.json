@@ -1,0 +1,30 @@
+{
+  "name": "node-deluge",
+  "version": "1.0.0",
+  "description": "A simple Deluge NodeJs API interface/wrapper, asynchronous NodeJs module to interact with the Deluge torrent client API.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nusrath/node-deluge.git"
+  },
+  "keywords": [
+    "deluge",
+    "node",
+    "torrent",
+    "api",
+    "web"
+  ],
+  "author": "Nusrath Khan <nusrath501khan@gmail.com> (nusrath.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Nusrath/node-deluge/issues"
+  },
+  "homepage": "https://github.com/Nusrath/node-deluge#readme",
+  "dependencies": {
+    "http": "0.0.0",
+    "node-schedule": "^0.2.9"
+  }
+}
