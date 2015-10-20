@@ -10,9 +10,11 @@ npm install --save node-deluge
 
 First 'require' the package into your project
 node-deluge accepts 3 parameters as input:
-hostname: _your server's url, eg. deluge.nusrath.com or 192.168.1.111_
-password: _your server's password_
-port: _the port your server consumes - the default is 8112, if you are running the default port, use 'null' here (without the quotes)_
+
+- hostname: _your server's url, eg. deluge.nusrath.com or 192.168.1.111_
+- password: _your server's password_
+- port: _the port your server consumes - the default is 8112, if you are running the default port, use 'null' here (without the quotes)_
+
 ```javascript
 var deluge = require('node-deluge')(hostname, password, port);
 ```
@@ -24,7 +26,13 @@ deluge.method(callback(json_data))
 ```
 
 ## METHODS
-### There are currently 2 methods available:
+_There are currently 2 methods available:_
 
 `get_status` this method returns as JSON the status of all torrents currently added to the client.
 `get_config` this method returns as JSON the current configuration of the torrent client, including download paths, etc.
+
+## TODO
+_Include all methods mentioned in the link specified in the 'RESOURCES' section_
+
+## RESOURCES
+[Deluge API documentation](http://dev.deluge-torrent.org/wiki/Development/WebUi/Json)
