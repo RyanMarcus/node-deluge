@@ -11,9 +11,9 @@ npm install --save node-deluge
 First 'require' the package into your project
 node-deluge accepts 3 parameters as input:
 
-- hostname: _your server's url, eg. deluge.nusrath.com or 192.168.1.111_
-- password: _your server's password_
-- port: _the port your server consumes - the default is 8112, if you are running the default port, use 'null' here (without the quotes)_
+- `hostname:` _your server's url, eg._ `deluge.nusrath.com` _or_ `192.168.1.111`
+- `password:` _your server's_ `password`
+- `port:` _the_ `port` _your server consumes - the default is_ `8112` _, if you are running the default port, use_ `null` _here_
 
 ```javascript
 var deluge = require('node-deluge')(hostname, password, port);
