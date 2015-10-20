@@ -14,11 +14,9 @@ module.exports = function deluge(hostname, password, port){
 
     var counter;
     var auth_cooke = "";
-    var authed = false;
 
     //login to deluge
     auth(function (data){
-        authed = true;
         loggit(data)
     });
 
@@ -155,10 +153,10 @@ module.exports = function deluge(hostname, password, port){
     }
 
     return {
-        get_config: function get_config(callback){
-            get_config('GET', url, '', callback);
+        get_config: function (callback){
+            get_config(callback);
         },
-        get_status: function get_status(callback){
+        get_status: function (callback){
             get_status(callback);
         }
     }
