@@ -1,5 +1,5 @@
 var should = require('chai').should(),
-    deluge = require('../index'),
+    deluge = require('../index');
 
 describe('#get_config', function() {
   it('gets the current status of the deluge client', function() {
