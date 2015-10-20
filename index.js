@@ -29,7 +29,6 @@ module.exports = function deluge(hostname, password, port){
     {
         var params = [];
         send_request("core.get_config", params, function(data){
-            console.log(data);
             callback(data)
         });
     }
@@ -70,7 +69,6 @@ module.exports = function deluge(hostname, password, port){
         ];
 
         send_request("web.update_ui", params, function(data){
-            console.log(data);
             callback(data)
         });
     }
