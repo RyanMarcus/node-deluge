@@ -75,7 +75,7 @@ module.exports = function deluge(hostname, password, port){
 
     function loggit(data)
     {
-        if(JSON.parse(data).result == true){
+        if(data.result == true){
             console.log("Successfully authenticated with Deluge client!")
         }
         else{
@@ -134,7 +134,7 @@ module.exports = function deluge(hostname, password, port){
                 buffer.push(chunk.toString())
             });
             gunzip.on('end', function() {
-                callback(buffer.join(""));
+                callback(JSON.parse(buffer.join("")));
             })
 
         });
