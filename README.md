@@ -1,7 +1,7 @@
 # node-deluge
 A simple Deluge NodeJs API interface/wrapper, asynchronous NodeJs module to interact with the Deluge torrent client API.
 
-[![Build Status](https://travis-ci.org/Nusrath/node-deluge.svg?branch=master)](https://travis-ci.org/Nusrath/node-deluge)
+[![Build Status](https://travis-ci.org/Nusrath/node-deluge.svg?branch=master)](https://travis-ci.org/Nusrath/node-deluge) [![npm version](https://badge.fury.io/js/node-deluge.svg)](https://badge.fury.io/js/node-deluge)
 
 ## INSTALLATION
 ```
