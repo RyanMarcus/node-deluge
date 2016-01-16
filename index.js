@@ -5,7 +5,7 @@ var http = require('http');
 var zlib = require('zlib');
 var schedule = require('node-schedule');
 
-module.exports = function deluge(hostname, password, port, callback){
+module.exports = function deluge(hostname, password, port){
 
 	// INIT vars
 	if(port == null){
@@ -15,11 +15,8 @@ module.exports = function deluge(hostname, password, port, callback){
 	var counter;
 	var auth_cooke = "";
 
-	//login to deluge
-	auth(function (data){
-		loggit(data);
-		callback(data);
-	});
+
+
 
 	//update cookie every hour, as it expires
 	var j = schedule.scheduleJob('0 * * * *', function(){
@@ -85,10 +82,11 @@ module.exports = function deluge(hostname, password, port, callback){
 
 	}
 
+	
 	function auth(callback)
 	{
 		var params = [ password ];
-		send_request("auth.login", params,callback);
+		send_request("auth.login", params, callback);
 
 	}
 
@@ -152,11 +150,8 @@ module.exports = function deluge(hostname, password, port, callback){
 	}
 
 	return {
-		get_config: function (callback){
-			get_config(callback);
-		},
-		get_status: function (callback){
-			get_status(callback);
-		}
+		getConfig: get_config,
+		getStatus: get_status
 	};
+	
 };
