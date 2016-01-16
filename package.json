@@ -1,6 +1,6 @@
 {
   "name": "node-deluge",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "A simple Deluge NodeJs API interface/wrapper, asynchronous NodeJs module to interact with the Deluge torrent client API.",
   "main": "index.js",
   "scripts": {
