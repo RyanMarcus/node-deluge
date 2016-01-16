@@ -151,7 +151,8 @@ module.exports = function deluge(hostname, password, port){
 
 	return {
 		getConfig: get_config,
-		getStatus: get_status
+		getStatus: get_status,
+		auth: auth
 	};
 	
 };
