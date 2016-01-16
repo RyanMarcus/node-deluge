@@ -1,33 +1,34 @@
 {
-  "name": "node-deluge",
-  "version": "1.1.0",
-  "description": "A simple Deluge NodeJs API interface/wrapper, asynchronous NodeJs module to interact with the Deluge torrent client API.",
-  "main": "index.js",
-  "scripts": {
-    "test": "make test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Nusrath/node-deluge.git"
-  },
-  "keywords": [
-    "deluge",
-    "node",
-    "torrent",
-    "api",
-    "web"
-  ],
-  "author": "Nusrath Khan <nusrath501khan@gmail.com> (nusrath.com)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Nusrath/node-deluge/issues"
-  },
-  "homepage": "https://github.com/Nusrath/node-deluge#readme",
-  "dependencies": {
-    "node-schedule": "^0.2.9"
-  },
-  "devDependencies": {
-    "chai": "^3.3.0",
-    "mocha": "^2.3.3"
-  }
+    "name": "node-deluge",
+    "version": "1.1.0",
+    "description": "A simple Deluge NodeJs API interface/wrapper, asynchronous NodeJs module to interact with the Deluge torrent client API.",
+    "main": "index.js",
+    "scripts": {
+	"test": "make test"
+    },
+    "repository": {
+	"type": "git",
+	"url": "git+https://github.com/Nusrath/node-deluge.git"
+    },
+    "keywords": [
+	"deluge",
+	"node",
+	"torrent",
+	"api",
+	"web"
+    ],
+    "author": "Nusrath Khan <nusrath501khan@gmail.com> (nusrath.com)",
+    "contributors": ["Ryan Marcus <ryan@rmarcus.info> (rmarcus.info)"],
+    "license": "MIT",
+    "bugs": {
+	"url": "https://github.com/Nusrath/node-deluge/issues"
+    },
+    "homepage": "https://github.com/Nusrath/node-deluge#readme",
+    "dependencies": {
+	"node-schedule": "^0.2.9"
+    },
+    "devDependencies": {
+	"chai": "^3.3.0",
+	"mocha": "^2.3.3"
+    }
 }
