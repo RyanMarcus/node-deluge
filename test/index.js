@@ -3,26 +3,19 @@ var should = require('chai').should(),
 
 describe('#get_config', function() {
 	it('gets the current status of the deluge client', function() {
-		deluge.auth(function (res) {
-			deluge.get_config(
-    				function(data){
-    					should.exist(data);
-  					data.should.be.an('object');
-    				}
-			);
-		});
+		deluge.auth().then(deluge.getConfig).then(function (data) {
+    			should.exist(data);
+  			data.should.be.an('object');
+    		});
 	});
 });
 
 describe('#get_status', function() {
 	it('gets the current config of the deluge client', function() {
-		deluge.auth(function (res) {
-			deluge.get_status(
-    				function(data){
-    					should.exist(data);
-  					data.should.be.an('object');
-    				});
+		deluge.auth().then(deluge.getStatus).then(function (data) {
+    			should.exist(data);
+  			data.should.be.an('object');
 		});
-		
+				  
 	});
 });
