@@ -24,6 +24,10 @@ module.exports = function deluge(hostname, password, port){
 		auth(loggit);
 	});
 
+	function close() {
+		j.cancel();
+	}
+
 	function get_config()
 	{
 		var toR = Q.defer();
@@ -175,7 +179,8 @@ module.exports = function deluge(hostname, password, port){
 	return {
 		getConfig: get_config,
 		getStatus: get_status,
-		auth: auth
+		auth: auth,
+		close: close
 	};
 	
 };
