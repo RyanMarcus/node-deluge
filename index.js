@@ -4,6 +4,7 @@
 var http = require('http');
 var zlib = require('zlib');
 var schedule = require('node-schedule');
+var Q = require("q");
 
 module.exports = function deluge(hostname, password, port){
 
@@ -23,16 +24,24 @@ module.exports = function deluge(hostname, password, port){
 		auth(loggit);
 	});
 
-	function get_config(callback)
+	function get_config()
 	{
+		var toR = Q.defer();
 		var params = [];
 		send_request("core.get_config", params, function(data){
-			callback(data);
+			if (data) {
+				toR.resolve(data);
+			} else {
+				toR.reject(data);
+			}
 		});
+
+		return toR.promise;
 	}
 
 	function get_status(callback)
 	{
+		var toR = Q.defer();
 		var params;
 
 		params = [
@@ -67,8 +76,14 @@ module.exports = function deluge(hostname, password, port){
 		];
 
 		send_request("web.update_ui", params, function(data){
-			callback(data);
+			if (data) {
+				toR.resolve(data);
+			} else {
+				toR.reject(data);
+			}
 		});
+
+		return toR.promise;
 	}
 
 	function loggit(data)
@@ -83,11 +98,19 @@ module.exports = function deluge(hostname, password, port){
 	}
 
 	
-	function auth(callback)
+	function auth()
 	{
+		var toR = Q.defer();
 		var params = [ password ];
-		send_request("auth.login", params, callback);
+		send_request("auth.login", params, function(res) {
+			if (res) {
+				toR.resolve(res);
+			} else {
+				toR.reject(res);
+			}
+		});
 
+		return toR.promise;
 	}
 
 	function send_request(method, params, callback) {
