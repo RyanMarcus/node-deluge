@@ -19,20 +19,24 @@ node-deluge accepts 3 parameters as input:
 - `port:` _the_ `port` _your server consumes - the default is_ `8112` _, if you are running the default port, use_ `null` _here_
 
 ```javascript
-var deluge = require('node-deluge')(hostname, password, port);
+var deluge = require('node-deluge')(hostname, password, port).then(function (res) {
+  // res is true if authentication is good, false otherwise.
+});
 ```
 
 ### Make use of the various methods
 The syntax is as follows: 
 ```javascript
-deluge.method(callback(json_data))
+var deluge = require('node-deluge')(hostname, password, port).then(function (res) {
+  // res is true if authentication is good, false otherwise.
+  return deluge.getStatus(); // OR deluge.getConfig(), currently only two methods available
+}).then(function (data) {
+  // do something with the data..
+  
+  deluge.close(); // by default node-deluge keeps the connection open and so programs won't terminate without this
+});
 ```
 
-## METHODS
-_There are currently 2 methods available:_
-
-`get_status` this method returns as JSON the status of all torrents currently added to the client.
-`get_config` this method returns as JSON the current configuration of the torrent client, including download paths, etc.
 
 ## TODO
 _Include all methods mentioned in the link specified in the 'RESOURCES' section_
