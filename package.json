@@ -28,7 +28,8 @@
   "homepage": "https://github.com/Nusrath/node-deluge#readme",
   "dependencies": {
     "node-schedule": "^0.2.9",
-    "q": "^1.4.1"
+    "q": "^1.4.1",
+    "requests": "^0.1.7"
   },
   "devDependencies": {
     "chai": "^3.3.0",
