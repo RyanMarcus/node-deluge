@@ -27,9 +27,11 @@
   },
   "homepage": "https://github.com/Nusrath/node-deluge#readme",
   "dependencies": {
+    "@3846masa/axios-cookiejar-support": "0.0.4",
+    "axios": "^0.16.1",
     "node-schedule": "^0.2.9",
     "q": "^1.4.1",
-    "requests": "^0.1.7"
+    "tough-cookie": "^2.3.2"
   },
   "devDependencies": {
     "chai": "^3.3.0",

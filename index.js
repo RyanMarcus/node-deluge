@@ -1,11 +1,13 @@
 /**
  * Created by nusrathkhan on 2015/10/20.
  */
-var http = require('http');
-var zlib = require('zlib');
-var schedule = require('node-schedule');
-var Q = require("q");
-var request = require("request").defaults({jar: true});
+const schedule = require('node-schedule');
+const Q = require("q");
+const axios = require("axios");
+const axiosCookieJarSupport = require('@3846masa/axios-cookiejar-support');
+const tough = require('tough-cookie');
+
+axiosCookieJarSupport(axios);
 
 module.exports = function deluge(hostname, password, port){
 
@@ -14,8 +16,9 @@ module.exports = function deluge(hostname, password, port){
 	port = 8112;
     }
 
-    var counter;
-    var auth_cooke = "";
+    var counter = 0;
+    var jar = new tough.CookieJar();
+    
 
 
 
@@ -107,11 +110,11 @@ module.exports = function deluge(hostname, password, port){
     {
 	var toR = Q.defer();
 	var params = [ password ];
-	send_request("auth.login", params, function(res) {
+	send_request("auth.login", params, function(res, err) {
 	    if (res) {
 		toR.resolve(res);
 	    } else {
-		toR.reject(res);
+		toR.reject(err);
 	    }
 	});
 
@@ -120,27 +123,21 @@ module.exports = function deluge(hostname, password, port){
 
     function send_request(method, params, callback) {
 
-	//setup our request payload from input params
-	var payload ={
-	    'method' : method,
-	    'params' : params,
-	    'id'     : counter++
-	};
 
-        request.post(hostname + ":" + port + "/json", {
-            json: {
+        axios.post("http://" + hostname + ":" + port + "/json", {
 	        'method' : method,
 	        'params' : params,
 	        'id'     : counter++
-            }
-        }, function (error, response, body) {
-            if (error) {
-                console.error(error);
-                return;
-            }
-
-            callback(body);
+        }, {
+            jar: jar,
+            withCredentials: true,
+            headers: {"content-type": "application/json"} // default includes encoding which breaks deluge :(
+        }).then(res => {
+            callback(res.data, false);
+        }).catch(e => {
+            callback(false, e);
         });
+                 
     }
 
     return {
@@ -151,3 +148,5 @@ module.exports = function deluge(hostname, password, port){
     };
     
 };
+
+
